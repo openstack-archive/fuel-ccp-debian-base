@@ -1,0 +1,12 @@
+Defaults: %microservices setenv
+
+# root may run any commands via sudo as the network seervice user.  This is
+# neededfor database migrations of existing services which have not been
+# converted to run as a non-root user, but instead do that via sudo -E glance
+root ALL=(ALL) ALL
+
+# anyone in the kolla group may run /usr/local/bin/kolla_set_configs as the
+# root user via sudo without password confirmation
+%microservices ALL=(root) NOPASSWD: /usr/bin/install
+
+#includedir /etc/sudoers.d

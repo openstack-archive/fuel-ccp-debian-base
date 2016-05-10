@@ -1,0 +1,25 @@
+FROM {{ base_distro }}:{{ base_tag }}
+MAINTAINER {{ maintainer }}
+
+# This will prevent questions from being asked during the install
+ENV DEBIAN_FRONTEND noninteractive
+
+COPY sources.list.debian /etc/apt/sources.list
+COPY apt_preferences.debian /etc/apt/preferences
+
+# Ceph and Mariadb keys
+RUN apt-key adv --recv-keys --keyserver hkp://keyserver.ubuntu.com:80 08B73419AC32B4E966C1A330E84AC2C0460F3994 \
+    && apt-key adv --recv-keys --keyserver hkp://keyserver.ubuntu.com:80 0xcbcb082a1bb943db
+
+RUN apt-get update \
+    && apt-get upgrade -y \
+    && apt-get dist-upgrade -y \
+    && apt-get install -y --no-install-recommends ca-certificates curl sudo openssl python python-jinja2 python-six \
+    && curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py \
+    && python get-pip.py \
+    && rm get-pip.py \
+    && apt-get clean
+
+COPY sudoers /etc/sudoers
+RUN chmod 440 /etc/sudoers \
+    && groupadd microservices
