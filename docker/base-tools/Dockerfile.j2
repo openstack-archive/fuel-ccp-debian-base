@@ -4,5 +4,5 @@ MAINTAINER {{ maintainer }}
 # This will prevent questions from being asked during the install
 ENV DEBIAN_FRONTEND noninteractive
 
-RUN apt-get install -y --no-install-recommends lvm2 open-iscsi tgt vim less patch \
+RUN apt-get install -y --no-install-recommends netcat lvm2 open-iscsi tgt vim less patch \
     && apt-get clean
