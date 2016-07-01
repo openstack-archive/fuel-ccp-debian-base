@@ -3,6 +3,11 @@ MAINTAINER {{ maintainer }}
 
 # This will prevent questions from being asked during the install
 ENV DEBIAN_FRONTEND noninteractive
+COPY requirements.txt /tmp/requirements.txt
 
-RUN apt-get install -y --no-install-recommends netcat lvm2 open-iscsi tgt vim less patch \
-    && apt-get clean
+RUN apt-get install -y --no-install-recommends netcat lvm2 open-iscsi tgt vim less patch gcc python-dev \
+    && apt-get clean \
+    && pip install --no-cache-dir -r /tmp/requirements.txt \
+    && rm /tmp/requirements.txt \
+    && apt-get -y purge gcc python-dev \
+    && apt-get -y autoremove
