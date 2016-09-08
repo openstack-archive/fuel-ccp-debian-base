@@ -5,7 +5,6 @@ MAINTAINER {{ maintainer }}
 ENV DEBIAN_FRONTEND noninteractive
 
 COPY sources.list.debian /etc/apt/sources.list
-COPY apt_preferences.debian /etc/apt/preferences
 COPY apt_conf_retries /etc/apt/apt.conf.d/99retries
 
 # Ceph and Mariadb keys
