@@ -9,9 +9,3 @@ deb http://httpredir.debian.org/debian jessie-updates main
 
 # debian security updates
 deb http://security.debian.org jessie/updates main
-
-# Ceph repo
-deb http://download.ceph.com/debian-hammer/ jessie main
-
-# Maria DB repo
-deb [arch=amd64,i386] http://lon1.mirrors.digitalocean.com/mariadb/repo/10.1/debian jessie main

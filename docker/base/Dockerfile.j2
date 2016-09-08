@@ -5,12 +5,7 @@ MAINTAINER {{ maintainer }}
 ENV DEBIAN_FRONTEND noninteractive
 
 COPY sources.list.debian /etc/apt/sources.list
-COPY apt_preferences.debian /etc/apt/preferences
 COPY apt_conf_retries /etc/apt/apt.conf.d/99retries
-
-# Ceph and Mariadb keys
-RUN apt-key adv --recv-keys --keyserver hkp://keyserver.ubuntu.com:80 08B73419AC32B4E966C1A330E84AC2C0460F3994 \
-    && apt-key adv --recv-keys --keyserver hkp://keyserver.ubuntu.com:80 0xcbcb082a1bb943db
 
 RUN apt-get update \
     && apt-get upgrade -y \
