@@ -1,4 +1,4 @@
-FROM {{ namespace }}/base:{{ tag }}
+FROM {{ image_spec("base") }}
 MAINTAINER {{ maintainer }}
 
 COPY requirements.txt /tmp/requirements.txt
