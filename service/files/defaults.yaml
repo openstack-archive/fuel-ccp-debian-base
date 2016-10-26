@@ -1,0 +1,3 @@
+url:
+  debian: http://httpredir.debian.org/debian
+  debian_security: http://security.debian.org

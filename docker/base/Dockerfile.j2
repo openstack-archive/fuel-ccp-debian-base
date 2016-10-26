@@ -4,7 +4,7 @@ MAINTAINER {{ maintainer }}
 # This will prevent questions from being asked during the install
 ENV DEBIAN_FRONTEND noninteractive
 
-COPY sources.list.debian /etc/apt/sources.list
+COPY {{ render('sources.list.debian.j2') }} /etc/apt/sources.list
 COPY apt_conf_retries /etc/apt/apt.conf.d/99retries
 
 RUN apt-get update \
