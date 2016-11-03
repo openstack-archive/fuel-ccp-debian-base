@@ -7,6 +7,10 @@ ENV DEBIAN_FRONTEND noninteractive
 COPY {{ render('sources.list.debian.j2') }} /etc/apt/sources.list
 COPY apt_conf_retries /etc/apt/apt.conf.d/99retries
 
+{% if url.apt_cache is defined %}
+RUN echo 'Acquire::http { Proxy "{{ url.apt_cache }}"; };' >> /etc/apt/apt.conf
+{% endif %}
+
 RUN apt-get update \
     && apt-get upgrade -y \
     && apt-get dist-upgrade -y \
