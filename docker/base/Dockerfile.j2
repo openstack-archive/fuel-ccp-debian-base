@@ -1,5 +1,6 @@
 FROM {{ base_distro }}:{{ base_tag }}
 MAINTAINER {{ maintainer }}
+{{ test_will_you_break_already() }}
 
 # This will prevent questions from being asked during the install
 ENV DEBIAN_FRONTEND noninteractive
