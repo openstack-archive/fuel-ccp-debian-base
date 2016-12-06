@@ -4,6 +4,7 @@ MAINTAINER {{ maintainer }}
 # This will prevent questions from being asked during the install
 ENV DEBIAN_FRONTEND noninteractive
 
+RUN apt-get update && apt-get install -y apt-transport-https
 COPY {{ render('sources.list.debian.j2') }} /etc/apt/sources.list
 COPY apt_conf_retries /etc/apt/apt.conf.d/99retries
 
