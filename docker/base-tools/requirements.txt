@@ -3,5 +3,5 @@ PyYAML>=3.1.0  # MIT
 dumb-init  # init system for containers
 netifaces
 pykube
-python-etcd
+python-etcd>0.4.3
 six>=1.9.0  # MIT
