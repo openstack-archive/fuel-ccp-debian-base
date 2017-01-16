@@ -22,8 +22,6 @@ RUN chmod 440 /etc/sudoers \
     && groupadd microservices
 
 # Directories to store additional bin and configs needed for bootstrapping of the containers.
-# https://github.com/docker/docker/issues/13011
-RUN mkdir -p /opt/ccp/etc \
-    && mkdir /opt/ccp/bin \
+RUN mkdir -p /opt/ccp/etc /opt/ccp/bin \
     && chown -R root:microservices /opt/ccp \
     && chmod -R g+wrx /opt/ccp
